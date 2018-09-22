@@ -7,35 +7,46 @@ const initialState = {
 	errors: []
 };
 
-export default (state = initialState, action) => {
+export default function(state = initialState, action) {
 	switch (action.type) {
 		case REGISTER_REQUESTING:
+			console.log('state :', state);
 			return {
-				...state,
-				requesting: true
+				requesting: true,
+				successful: false,
+				messages: [],
+				errors: [],
 			};
 		case REGISTER_SUCCESS:
 			return {
-				...state,
+				requesting: false,
+				successful: true,
 				messages: [
 					{
 						body: `${action.response.data.msg}`
 					}
 				],
-				successful: true
+				errors: []
 			};
 		case REGISTER_UNSUCCESS:
+			console.log('state :', state);
 			return {
 				...state,
+				requesting: false,
+				successful: false,
 				messages: [
 					{
 						body: `${action.response.data.msg}`
 					}
-				]
+				],
+				errors: []
 			};
 		case REGISTER_ERROR:
 			return {
 				...state,
+				successful: false,
+				requesting: false,
+				messages:[],
 				errors: state.errors.concat([
 					{
 						body: action.error.toString()
@@ -46,4 +57,4 @@ export default (state = initialState, action) => {
 		default:
 			return state;
 	}
-};
+}
