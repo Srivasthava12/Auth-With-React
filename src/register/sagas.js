@@ -3,7 +3,7 @@ import { REGISTER_REQUESTING, REGISTER_SUCCESS, REGISTER_UNSUCCESS, REGISTER_ERR
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
-const endpoint = `http://localhost:4000/users/register`;
+const endpoint = `http://projectzeros.com/users/register`;
 
 function registerApi(name, email, userName, password) {
 	const body = {

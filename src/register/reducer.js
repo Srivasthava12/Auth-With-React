@@ -10,7 +10,6 @@ const initialState = {
 export default function(state = initialState, action) {
 	switch (action.type) {
 		case REGISTER_REQUESTING:
-			console.log('state :', state);
 			return {
 				requesting: true,
 				successful: false,
@@ -29,7 +28,6 @@ export default function(state = initialState, action) {
 				errors: []
 			};
 		case REGISTER_UNSUCCESS:
-			console.log('state :', state);
 			return {
 				...state,
 				requesting: false,

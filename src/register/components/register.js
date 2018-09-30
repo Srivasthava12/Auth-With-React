@@ -12,7 +12,7 @@ export class Register extends React.Component {
 		const { onSubmit, handleSubmit, messages } = this.props;
 		return (
 			<div>
-				<div id="login-box">
+				<div id="register-box">
 					<div className="left">
 						<h1>Sign up</h1>
 						<form onSubmit={handleSubmit(onSubmit)}>
@@ -69,7 +69,6 @@ export class Register extends React.Component {
 					</div>
 					<div className="or">OR</div>
 				</div>
-
 				<div>{!!messages.length && <Message message={messages[0].body} />}</div>
 			</div>
 		);
