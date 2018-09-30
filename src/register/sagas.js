@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { REGISTER_REQUESTING, REGISTER_SUCCESS, REGISTER_UNSUCCESS, REGISTER_ERROR } from './constants';
+import { SUCCESS_IN_REGISTER } from '../login/constants'
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
@@ -34,6 +35,7 @@ function* registerFlow(action) {
 		const response = yield call(registerApi, name, email, userName, password);
 		if (response.data.success) {
 			yield put({ type: REGISTER_SUCCESS, response });
+			yield put({ type: SUCCESS_IN_REGISTER, response });
 			yield put(push('/login'));
 		} else {
 			yield put({ type: REGISTER_UNSUCCESS, response });
