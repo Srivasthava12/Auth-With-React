@@ -3,6 +3,7 @@ import axios from 'axios';
 import { push } from 'react-router-redux';
 
 import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_UNSUCCESS } from './constants';
+import {SET_USER_INFO} from '../user/constants'
 
 const endpoint = `http://projectzeros.com/users/authenticate`;
 
@@ -28,13 +29,12 @@ function loginApi(email, password) {
 function* loginFlow(action) {
 	try {
 		const { email, password } = action;
-		console.log('password :', password);
 		const response = yield call(loginApi, email, password);
-		console.log('response :', response);
 		if (response.data.success) {
 			localStorage['token'] = JSON.stringify(response.data.token);
 			localStorage['user'] = JSON.stringify(response.data.user);
 			yield put({ type: LOGIN_SUCCESS, response });
+			yield put({ type: SET_USER_INFO, response:response.data.user });
 			yield put(push('/profile'));
 		} else {
 			yield put({ type: LOGIN_UNSUCCESS, response });

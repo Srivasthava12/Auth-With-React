@@ -29,7 +29,7 @@ const composeSetup =
 		: compose;
 /*eslint-enable */
 
-const store = createStore(
+export const store = createStore(
 	IndexReducer,
 	composeSetup(applyMiddleware(sagaMiddleware, routersMiddleware)) // allows redux devtools to watch sagas
 );
