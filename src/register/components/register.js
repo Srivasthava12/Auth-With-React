@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { selectMessages } from '../selector';
 import { registerRequesting } from '../actions';
+import { Link } from 'react-router-dom';
 import Message from '../../share/messages';
 import './stylesForReg.css';
 
@@ -57,17 +58,9 @@ export class Register extends React.Component {
 							</div>
 						</form>
 					</div>
-
-					<div className="right">
-						<span className="loginwith">
-							Sign in with<br />social network
-						</span>
-
-						<button className="social-signin facebook">Log in with facebook</button>
-						<button className="social-signin twitter">Log in with Twitter</button>
-						<button className="social-signin google">Log in with Google+</button>
-					</div>
-					<div className="or">OR</div>
+				</div>
+				<div className="link">
+					Already a Regsitered User?<Link to="/login"> Login Here »</Link>
 				</div>
 				<div>{!!messages.length && <Message message={messages[0].body} />}</div>
 			</div>

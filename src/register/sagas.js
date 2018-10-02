@@ -1,10 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { REGISTER_REQUESTING, REGISTER_SUCCESS, REGISTER_UNSUCCESS, REGISTER_ERROR } from './constants';
-import { SUCCESS_IN_REGISTER } from '../login/constants'
-import axios from 'axios';
+import { SUCCESS_IN_REGISTER } from '../login/constants';
+import { apiHandle } from '../helpers/apiHandle';
 import { push } from 'react-router-redux';
-
-const endpoint = `http://projectzeros.com/users/register`;
 
 function registerApi(name, email, userName, password) {
 	const body = {
@@ -18,13 +16,17 @@ function registerApi(name, email, userName, password) {
 			'Content-Type': 'application/json'
 		}
 	};
-	try {
-		const response = axios.post(endpoint, body, config);
-		return response;
-	} catch (ex) {
-		if (ex && ex.response && ex.response.data && ex.response.data) throw ex.response.data.Errors;
-		throw ex;
-	}
+
+	const endpoint = `http://projectzeros.com/users/register`;
+
+	const apiOptions = {
+		body: body,
+		config: config,
+		method: 'post',
+		endpoint: endpoint
+	};
+
+	return apiHandle(apiOptions);
 }
 
 // This will be run when the REGISTER_REQUESTING

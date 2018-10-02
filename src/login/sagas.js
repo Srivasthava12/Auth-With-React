@@ -1,11 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
 import { push } from 'react-router-redux';
-
+import { apiHandle } from '../helpers/apiHandle';
 import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_UNSUCCESS } from './constants';
 import {SET_USER_INFO} from '../user/constants'
 
-const endpoint = `http://projectzeros.com/users/authenticate`;
+
 
 function loginApi(email, password) {
 	const body = {
@@ -17,13 +16,15 @@ function loginApi(email, password) {
 			'Content-Type': 'application/json'
 		}
 	};
-	try {
-		const response = axios.post(endpoint, body, config);
-		return response;
-	} catch (ex) {
-		if (ex && ex.response && ex.response.data && ex.response.data) throw ex.response.data.Errors;
-		throw ex;
-	}
+	const endpoint = `http://projectzeros.com/users/authenticate`;
+	const apiOptions = {
+		body: body,
+		config: config,
+		method: 'post',
+		endpoint: endpoint
+	};
+
+	return apiHandle(apiOptions);
 }
 
 function* loginFlow(action) {

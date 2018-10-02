@@ -5,7 +5,8 @@ import { reduxForm, Field } from 'redux-form';
 import { selectMessages } from '../selector';
 import Message from '../../share/messages';
 import { loginRequesting } from '../actions';
-import './stylesForLog.css'
+import { Link } from 'react-router-dom';
+import './stylesForLog.css';
 
 export class Login extends React.Component {
 	render() {
@@ -26,6 +27,9 @@ export class Login extends React.Component {
 									placeholder="Email"
 									component="input"
 								/>
+								<div className="forgotPassword">
+									<Link to="/forgotpassword"> Forgot Password?</Link>
+								</div>
 								<Field
 									name="password"
 									type="password"
