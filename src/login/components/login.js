@@ -44,6 +44,9 @@ export class Login extends React.Component {
 						</form>
 					</div>
 				</div>
+				<div className="link">
+					Don't have a account with us?<Link to="/register"> Register Here !!</Link>
+				</div>
 				<div>{!!messages.length && <Message message={messages[0].body} />}</div>
 			</div>
 		);

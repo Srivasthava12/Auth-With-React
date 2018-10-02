@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { selectMessages } from '../selector';
+import { selectMessages, selectSuccessful } from '../selector';
 import { requestingForgotPassword } from '../actions';
 import Message from '../../share/messages';
+import { Link } from 'react-router-dom';
 import './StylesForForgotPassword.css';
 
 export class forgotpassword extends Component {
 	render() {
-		const { onSubmit, handleSubmit, messages } = this.props;
+		const { onSubmit, handleSubmit, messages, successful } = this.props;
 		return (
 			<div>
 				<div id="forgotPassword-box">
@@ -31,6 +32,7 @@ export class forgotpassword extends Component {
 						</form>
 					</div>
 				</div>
+				<div>{successful && <Link to="/login">Login Here !!</Link>}</div>
 				<div>{!!messages.length && <Message message={messages[0].body} />}</div>
 			</div>
 		);
@@ -40,11 +42,13 @@ export class forgotpassword extends Component {
 forgotpassword.propTypes = {
 	handleSubmit: PropTypes.func,
 	onSubmit: PropTypes.func,
-	messages: PropTypes.array
+	messages: PropTypes.array,
+	successful: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
-	messages: selectMessages(state)
+	messages: selectMessages(state),
+	successful: selectSuccessful(state)
 });
 
 export const mapDispatchToProps = (dispatch) => ({

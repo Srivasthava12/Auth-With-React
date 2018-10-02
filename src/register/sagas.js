@@ -36,6 +36,7 @@ function* registerFlow(action) {
 		const { name, email, userName, password } = action;
 		const response = yield call(registerApi, name, email, userName, password);
 		if (response.data.success) {
+			localStorage.clear();
 			yield put({ type: REGISTER_SUCCESS, response });
 			yield put({ type: SUCCESS_IN_REGISTER, response });
 			yield put(push('/login'));
