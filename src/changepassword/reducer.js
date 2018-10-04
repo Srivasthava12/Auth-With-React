@@ -1,5 +1,9 @@
-import { LOGIN_REQUESTING, SUCCESS_IN_REGISTER, LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_UNSUCCESS, LOGOUT_SUCCESSFUL } from './constants';
-
+import {
+	REQUESTING_CHANGE_PASSWORD,
+	SUCCESS_CHANGE_PASSWORD,
+	UNSUCCESS_CHANGE_PASSWORD,
+	ERROR_CHANGE_PASSWORD
+} from './constants';
 const initialState = {
 	requesting: false,
 	successful: false,
@@ -9,25 +13,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case SUCCESS_IN_REGISTER:
-			return {
-				requesting: false,
-				successful: false,
-				messages: [
-					{
-						body: `${action.response.data.msg}`
-					}
-				],
-				errors: []
-			};
-		case LOGIN_REQUESTING:
+		case REQUESTING_CHANGE_PASSWORD:
 			return {
 				requesting: true,
 				successful: false,
 				messages: [],
 				errors: []
 			};
-		case LOGIN_SUCCESS:
+		case SUCCESS_CHANGE_PASSWORD:
 			return {
 				requesting: false,
 				successful: true,
@@ -38,8 +31,9 @@ export default (state = initialState, action) => {
 				],
 				errors: []
 			};
-		case LOGIN_UNSUCCESS:
+		case UNSUCCESS_CHANGE_PASSWORD:
 			return {
+				...state,
 				requesting: false,
 				successful: false,
 				messages: [
@@ -49,10 +43,11 @@ export default (state = initialState, action) => {
 				],
 				errors: []
 			};
-		case LOGIN_ERROR:
+		case ERROR_CHANGE_PASSWORD:
 			return {
-				requesting: false,
+				...state,
 				successful: false,
+				requesting: false,
 				messages: [],
 				errors: state.errors.concat([
 					{
@@ -60,19 +55,6 @@ export default (state = initialState, action) => {
 					}
 				])
 			};
-
-			case LOGOUT_SUCCESSFUL:
-			return{
-				requesting: false,
-				successful: false,
-				messages: [
-					{
-						body: `${action.message}`
-					}
-				],
-				errors: []
-			}
-
 		default:
 			return state;
 	}
