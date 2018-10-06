@@ -24,9 +24,11 @@ export class Profile extends React.Component {
 							The world isn't perfect. But it's there for us, doing the best it can....that's what makes
 							it so damn beautiful.
 						</p>
-						<Menu options={this.options} optionHandle={optionHandle} />
 					</div>
 				</aside>
+				<div className = "menu">
+				<Menu options={this.options} optionHandle={optionHandle} />
+				</div>
 			</div>
 		);
 	}

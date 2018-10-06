@@ -1,8 +1,8 @@
 import {
-	REQUESTING_CHANGE_PASSWORD,
-	SUCCESS_CHANGE_PASSWORD,
-	UNSUCCESS_CHANGE_PASSWORD,
-	ERROR_CHANGE_PASSWORD
+	REQUESTING_RESET_PASSWORD,
+	SUCCESS_RESET_PASSWORD,
+	UNSUCCESS_RESET_PASSWORD,
+	ERROR_RESET_PASSWORD
 } from './constants';
 const initialState = {
 	requesting: false,
@@ -13,14 +13,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case REQUESTING_CHANGE_PASSWORD:
+		case REQUESTING_RESET_PASSWORD:
 			return {
 				requesting: true,
 				successful: false,
 				messages: [],
 				errors: []
 			};
-		case SUCCESS_CHANGE_PASSWORD:
+		case SUCCESS_RESET_PASSWORD:
 			return {
 				requesting: false,
 				successful: true,
@@ -31,9 +31,8 @@ export default (state = initialState, action) => {
 				],
 				errors: []
 			};
-		case UNSUCCESS_CHANGE_PASSWORD:
+		case UNSUCCESS_RESET_PASSWORD:
 			return {
-				...state,
 				requesting: false,
 				successful: false,
 				messages: [
@@ -43,9 +42,8 @@ export default (state = initialState, action) => {
 				],
 				errors: []
 			};
-		case ERROR_CHANGE_PASSWORD:
+		case ERROR_RESET_PASSWORD:
 			return {
-				...state,
 				successful: false,
 				requesting: false,
 				messages: [],

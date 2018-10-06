@@ -5,6 +5,7 @@ import Register from '../src/register';
 import Profile from '../src/profile';
 import ForgotPassword from '../src/forgotpassword';
 import ChangePassword from '../src/changepassword';
+import ResetPassword from '../src/resetpassword'
 import { isLoggedIn } from './helpers/check-auth';
 
 export default class Main extends React.Component {
@@ -19,6 +20,7 @@ export default class Main extends React.Component {
 						render={() => (isLoggedIn() ? <Profile /> : <Redirect to="/login" />)}
 					/>
 					<Route exact path="/register" component={Register} />
+					<Route  path="/resetpassword" component={ResetPassword} />
 					<Route
 						exact
 						path="/forgotpassword"

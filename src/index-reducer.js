@@ -5,6 +5,7 @@ import  register from  './register/reducer'
 import login from './login/reducer'
 import forgotPassword from './forgotpassword/reducer'
 import changePassword from './changepassword/reducer'
+import resetPassword from './resetpassword/reducer'
 
 const  IndexReducer  =  combineReducers({
        register,
@@ -12,6 +13,7 @@ const  IndexReducer  =  combineReducers({
        user,
        forgotPassword,
        changePassword,
+       resetPassword,
        form
 })
 export  default  IndexReducer

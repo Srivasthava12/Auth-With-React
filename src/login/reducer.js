@@ -1,4 +1,11 @@
-import { LOGIN_REQUESTING, SUCCESS_IN_REGISTER, LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_UNSUCCESS, LOGOUT_SUCCESSFUL } from './constants';
+import {
+	LOGIN_REQUESTING,
+	SUCCESS_IN_REGISTER,
+	LOGIN_SUCCESS,
+	LOGIN_ERROR,
+	LOGIN_UNSUCCESS,
+	LOGOUT_SUCCESSFUL
+} from './constants';
 
 const initialState = {
 	requesting: false,
@@ -61,8 +68,8 @@ export default (state = initialState, action) => {
 				])
 			};
 
-			case LOGOUT_SUCCESSFUL:
-			return{
+		case LOGOUT_SUCCESSFUL:
+			return {
 				requesting: false,
 				successful: false,
 				messages: [
@@ -71,9 +78,9 @@ export default (state = initialState, action) => {
 					}
 				],
 				errors: []
-			}
+			};
 
 		default:
-			return state;
+			return initialState;
 	}
 };

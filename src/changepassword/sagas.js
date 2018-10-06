@@ -35,6 +35,7 @@ function* changePasswordFlow(action) {
 	try {
 		const { oldPassword, newPassword } = action;
 		const response = yield call(changePasswordApi, oldPassword, newPassword);
+		console.log(response)
 		if (response.data.success) {
 			yield put({ type: SUCCESS_CHANGE_PASSWORD, response });
 		} else {
