@@ -24,11 +24,10 @@ function changePasswordApi(oldPassword, newPassword) {
 	const apiOptions = {
 		body: body,
 		config: config,
-		method: 'post',
 		endpoint: endpoint
 	};
 
-	return apiHandle(apiOptions);
+	return apiHandle(apiOptions).post();
 }
 
 function* changePasswordFlow(action) {

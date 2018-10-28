@@ -22,11 +22,10 @@ function registerApi(name, email, userName, password) {
 	const apiOptions = {
 		body: body,
 		config: config,
-		method: 'post',
 		endpoint: endpoint
 	};
 
-	return apiHandle(apiOptions);
+	return apiHandle(apiOptions).post();
 }
 
 // This will be run when the REGISTER_REQUESTING

@@ -22,11 +22,10 @@ function forgotPasswordApi(email) {
 	const apiOptions = {
 		body: body,
 		config: config,
-		method: 'post',
 		endpoint: endpoint
 	};
 
-	return apiHandle(apiOptions);
+	return apiHandle(apiOptions).post();
 }
 
 function* forgotPasswordFlow(action) {
