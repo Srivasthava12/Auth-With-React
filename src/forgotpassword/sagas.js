@@ -6,6 +6,7 @@ import {
 	ERROR_FORGOT_PASSWORD
 } from './constants';
 import { apiHandle } from '../helpers/apiHandle';
+import {con} from '../config/config'
 
 function forgotPasswordApi(email) {
 	const body = {
@@ -17,7 +18,7 @@ function forgotPasswordApi(email) {
 		}
 	};
 
-	const endpoint = `http://projectzeros.com/users/forgotpassword`;
+	const endpoint = `${con.url}/users/forgotpassword`;
 
 	const apiOptions = {
 		body: body,

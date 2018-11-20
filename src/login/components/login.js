@@ -65,7 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.hasOwnProperty('email', 'password')) dispatch(loginRequesting(value));
+		if (value.email && value.password) dispatch(loginRequesting(value));
 		else alert('Please Fill All the Fields');
 	}
 });

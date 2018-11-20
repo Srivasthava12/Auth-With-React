@@ -53,7 +53,7 @@ const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.hasOwnProperty('email')) dispatch(requestingForgotPassword(value));
+		if (value.email) dispatch(requestingForgotPassword(value));
 		else alert('Please Fill  the Fields');
 	}
 });

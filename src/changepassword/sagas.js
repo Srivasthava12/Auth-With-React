@@ -6,6 +6,7 @@ import {
 	ERROR_CHANGE_PASSWORD
 } from './constants';
 import { apiHandle } from '../helpers/apiHandle';
+import {con} from '../config/config'
 
 function changePasswordApi(oldPassword, newPassword) {
 	const body = {
@@ -19,7 +20,7 @@ function changePasswordApi(oldPassword, newPassword) {
 		}
 	};
 
-	const endpoint = `http://projectzeros.com/users/changepassword`;
+	const endpoint = `${con.url}/users/changepassword`;
 
 	const apiOptions = {
 		body: body,

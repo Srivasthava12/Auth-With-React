@@ -27,8 +27,8 @@ class SimpleMenu extends React.Component {
 	};
 
 	handleClose = (option) => {
-		if (typeof option !== 'object') this.props.optionHandle(option);
 		this.setState({ anchorEl: null });
+		if (typeof option !== 'object') this.props.optionHandle(option);
 	};
 
 	render() {

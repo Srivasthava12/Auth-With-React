@@ -58,7 +58,7 @@ const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.hasOwnProperty('newPassword', 'confrimPassword')) dispatch(requestingResetPassword(value));
+		if (value.newPassword && value.confrimPassword) dispatch(requestingResetPassword(value));
 		else alert('Please Fill  the Fields');
 	}
 });

@@ -7,6 +7,7 @@ import {
 } from './constants';
 import { apiHandle } from '../helpers/apiHandle';
 import jwtDecode from 'jwt-decode';
+import {con} from '../config/config'
 
 function resetPasswordApi(newPassword, index) {
 	if (jwtDecode(index).exp < Date.now() / 1000) {
@@ -27,7 +28,7 @@ function resetPasswordApi(newPassword, index) {
 		}
 	};
 
-	const endpoint = `http://projectzeros.com/users/resetpassword`;
+	const endpoint = `${con.url}/users/resetpassword`;
 
 	const apiOptions = {
 		body: body,

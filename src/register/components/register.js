@@ -80,7 +80,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.hasOwnProperty('name', 'email', 'userName', 'password')) dispatch(registerRequesting(value));
+		if (value.name && value.email && value.userName && value.password) dispatch(registerRequesting(value));
 		else alert('Please Fill All the Fields');
 	}
 });

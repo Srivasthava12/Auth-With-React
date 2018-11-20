@@ -58,7 +58,7 @@ const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.hasOwnProperty('newPassword', 'oldPassword')) dispatch(requestingChangePassword(value));
+		if (value.newPassword && value.oldPassword) dispatch(requestingChangePassword(value));
 		else alert('Please Fill  the Fields');
 	}
 });

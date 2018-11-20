@@ -3,6 +3,7 @@ import { REGISTER_REQUESTING, REGISTER_SUCCESS, REGISTER_UNSUCCESS, REGISTER_ERR
 import { SUCCESS_IN_REGISTER } from '../login/constants';
 import { apiHandle } from '../helpers/apiHandle';
 import { push } from 'react-router-redux';
+import {con} from '../config/config'
 
 function registerApi(name, email, userName, password) {
 	const body = {
@@ -17,7 +18,7 @@ function registerApi(name, email, userName, password) {
 		}
 	};
 
-	const endpoint = `http://projectzeros.com/users/register`;
+	const endpoint = `${con.url}/users/register`;
 
 	const apiOptions = {
 		body: body,
