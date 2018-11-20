@@ -30,8 +30,8 @@ export class resetpassword extends Component {
 									name="confirmPassword"
 									type="password"
 									id="confirmPassword"
-									className="confrimPassword"
-									label="confrimPassword"
+									className="confirmPassword"
+									label="confirmPassword"
 									placeholder="Confrim-Password"
 									component="input"
 								/>
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
 	onSubmit: (value) => {
-		if (value.newPassword && value.confrimPassword) dispatch(requestingResetPassword(value));
+		if (value.newPassword && value.confirmPassword) dispatch(requestingResetPassword(value));
 		else alert('Please Fill  the Fields');
 	}
 });
