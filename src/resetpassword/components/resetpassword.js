@@ -27,7 +27,7 @@ export class resetpassword extends Component {
 									component="input"
 								/>
 								<Field
-									name="Confirm Password"
+									name="confirmPassword"
 									type="password"
 									id="confirmPassword"
 									className="confrimPassword"
